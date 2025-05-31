@@ -1,4 +1,4 @@
-<% content_for :title, "Showing event" %>
+<% content_for :title, "Mostrar evento" %>
 
 <div class="md:w-2/3 w-full">
   <% if notice.present? %>
@@ -9,7 +9,23 @@
 
   <%= render @event %>
 
-  <%= link_to "Edit this event", edit_event_path(@event), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to events", events_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= button_to "Destroy this event", @event, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+  <div class="mb-6">
+  <%= form_with(model: @event, method: :patch, class: "contents  w-full") do |form| %>
+    <% @students.each do |student| %>
+      <div>
+        <%= check_box_tag "student_ids[]", student.id, 
+                          student.has_participation?(@event.id), 
+                          id: "student_#{student.id}" %>
+        <%= label_tag "student_#{student.id}", student.name %>
+        <p><%= student.has_participation?(@event.id) ? "Presente" : "Ausente" %></p>
+      </div>
+    <% end %>
+    
+    <%= form.submit "Atualizar Presenças", class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <% end %>
+  </div>
+
+  <%= link_to "Editar este evento", edit_event_path(@event), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <%= link_to "Voltar para eventos", events_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <%= button_to "Destruir este evento", @event, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Você tem certeza?" } %>
 </div>

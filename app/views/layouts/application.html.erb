@@ -10,23 +10,31 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%# Se você decidir usar uma fonte customizada para todo o app (ex: Lato ou Pacifico),
+        os links do Google Fonts iriam aqui, assim como no session.html.erb %>
+    <%# Exemplo com Lato: %>
+    <%# <link rel="preconnect" href="https://fonts.googleapis.com"> %>
+    <%# <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> %>
+    <%# <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> %>
   </head>
 
-  <body>
+  <%# Aplicando cor de fundo e, opcionalmente, a fonte customizada ao body %>
+  <body class="bg-sky-100"> <%# Substitua 'font-lato' pela sua classe de fonte se desejar %>
     <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
       <%= render "layouts/sidebar" %>
-        <main class="container mx-auto mt-28 px-5 flex">
-        <%= yield %>
+
+      <%# Ajustando a tag <main> e adicionando um div para o card %>
+      <main class="flex-1 container mx-auto mt-28 mb-10 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white p-8 sm:p-10 rounded-xl shadow-xl w-full text-justify">
+          <%= yield %>
+        </div>
       </main>
     </div>
   </body>
