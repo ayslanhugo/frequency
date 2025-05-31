@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
+    @students = Student.all
   end
 
   # GET /events/new
@@ -25,7 +26,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: "Event was successfully created." }
+        format.html { redirect_to @event, notice: "Formação criado com sucesso!" }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,9 +37,31 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
+    # Buscar todos os participantes no banco que foram passados no
+    # parametro student_ids
+    # SELECT * FROM STUDENTS WHERE ID = [1, 2, 3]
+    if !params[:student_ids].blank?
+      students = Student.where(id: params[:student_ids])
+
+      # Exclui todos os participantes existentes no evento que nao foram
+      # passados no params[:student_ids], isso significa que foram desmarcados
+      # no frontend.
+      # event => 3, student_id: 1, student_id: 2, student_id: 3
+      # SELECT * FROM PARTICIPANTES WHERE NOT [1, 3]
+      @event.participations.where.not(student_id: students.ids).delete_all
+
+      if students.present?
+        students.each do |student|
+          unless student.has_participation?(@event.id)
+            Participation.create(student: student, event: @event, user: Current.user)
+          end
+        end
+      end
+    end
+
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: "Event was successfully updated." }
+        format.html { redirect_to @event, notice: "Formação atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +75,7 @@ class EventsController < ApplicationController
     @event.destroy!
 
     respond_to do |format|
-      format.html { redirect_to events_path, status: :see_other, notice: "Event was successfully destroyed." }
+      format.html { redirect_to events_path, status: :see_other, notice: "Formação excluida com sucesso." }
       format.json { head :no_content }
     end
   end

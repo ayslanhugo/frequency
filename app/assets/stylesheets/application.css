@@ -8,3 +8,12 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+/* No seu arquivo app/assets/stylesheets/application.tailwind.css (ou similar) */
+
+@import "tailwindcss/base"; /* Ou @tailwind base; */
+@import "tailwindcss/components"; /* Ou @tailwind components; */
+@import "tailwindcss/utilities"; /* Ou @tailwind utilities; */
+
+
+
+/* Seu CSS customizado adicional pode vir aqui, se houver */
