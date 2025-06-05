@@ -1,11 +1,14 @@
 <%# Layout para a página de login %>
 
   <%# Seu código de login começa aqui, assumindo que o wrapper acima está no layout %>
-  <div class="bg-white p-8 sm:p-10 rounded-xl shadow-xl w-full max-w-md">
+  <div class="p-8 sm:p-10 rounded-xl shadow-xl w-full max-w-md" style="background-color:hsl(50, 8%, 85%)">
     <%# Logo da Igreja %>
-<%= image_tag 'logo.svg', alt: 'logo'%>
+    <%# <h1 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">FREQUENCY</h1> %>
+    <%= image_tag '/logo.png', alt: 'logo' %>
+    <%# <img src="/logo.png" alt="Logo da Igreja"> %>
+
     <%# Título da página %>
-    <h1 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">Bem-vindo de volta!</h1>
+    <h1 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">Seja Bem-vindo!</h1>
 
     <%# Mensagens de alerta e aviso %>
     <% if alert = flash[:alert] %>

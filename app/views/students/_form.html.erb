@@ -1,7 +1,7 @@
 <%= form_with(model: student, class: "contents") do |form| %>
   <% if student.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(student.errors.count, "error") %> teste2:</h2>
+      <h2><%= pluralize(student.errors.count, "error") %> error</h2>
 
       <ul class="list-disc ml-6">
         <% student.errors.each do |error| %>
@@ -12,21 +12,21 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :name %>
+    <%= form.label "Nome do participante" %>
     <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": student.errors[:name].none?, "border-red-400 focus:outline-red-600": student.errors[:name].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :email %>
+    <%= form.label "Email" %>
     <%= form.text_field :email, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": student.errors[:email].none?, "border-red-400 focus:outline-red-600": student.errors[:email].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :phone %>
+    <%= form.label "Telefone" %>
     <%= form.text_field :phone, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": student.errors[:phone].none?, "border-red-400 focus:outline-red-600": student.errors[:phone].any?}] %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "Salvar participante", class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

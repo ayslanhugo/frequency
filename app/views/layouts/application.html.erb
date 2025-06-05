@@ -15,6 +15,7 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    
     <%= javascript_importmap_tags %>
 
     <%# Se você decidir usar uma fonte customizada para todo o app (ex: Lato ou Pacifico),
@@ -26,7 +27,7 @@
   </head>
 
   <%# Aplicando cor de fundo e, opcionalmente, a fonte customizada ao body %>
-  <body class="bg-sky-100"> <%# Substitua 'font-lato' pela sua classe de fonte se desejar %>
+  <body class="bg-green" style="background-color:rgb(221, 215, 215)"> <%# Substitua 'font-lato' pela sua classe de fonte se desejar %>
     <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
       <%= render "layouts/sidebar" %>
 

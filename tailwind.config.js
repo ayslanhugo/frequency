@@ -7,12 +7,9 @@ module.exports = {
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js'
   ],
+  darkMode: 'class',
   theme: {
     extend: {
-      fontFamily: {
-        // 'lato': ['Lato', ...defaultTheme.fontFamily.sans], // Pode manter se quiser
-        'pacifico': ['Pacifico', ...defaultTheme.fontFamily.cursive], // Nova fonte "Pacifico"
-      },
     },
   },
   plugins: [],
