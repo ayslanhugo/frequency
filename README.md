@@ -3,6 +3,9 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+
+foreman start -f Procfile.dev
+
 Things you may want to cover:
 
 * Ruby version
