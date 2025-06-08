@@ -28,8 +28,8 @@
         <%# Logo %>
         <img src="/logo.png" 
             alt="Logo da Igreja"
-            class="transition-all duration-300 ease-in-out"
-            :class="desktopCollapsed ? 'h-8 w-auto' : 'h-10 w-auto'">
+            class="transition-all duration-900 ease-in-out"
+            :class="desktopCollapsed ? 'h-8 w-auto' : 'h-30 w-auto'">
       </a>
       <%# Botão de toggle para mobile (continua escondido em telas md+) %>
       <button class="rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-white" @click="open = !open">
@@ -87,7 +87,7 @@
         <svg class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
         </svg>
-        <span class="ms-3" :class="{ 'md:hidden': desktopCollapsed }">Nossa Missão</span>
+        <span class="ms-3" :class="{ 'md:hidden': desktopCollapsed }">Missão</span>
       <% end %>
       </div>
 
