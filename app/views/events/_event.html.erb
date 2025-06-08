@@ -8,8 +8,6 @@
   <div>
     <strong class="block font-medium mb-1">Data:</strong>
     <%= event.event_at&.strftime("%d/%m/%Y %H:%M") || content_tag(:span, "Data não informada", class: "text-gray-500") %>
-    <%# Se preferir não mostrar nada quando for nil: %>
-    <%# <%= event.event_at&.strftime("%d/%m/%Y %H:%M") %>
   </div>
   
   <div>

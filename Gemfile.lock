@@ -98,11 +98,14 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
+    foreman (0.88.1)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    grover (1.2.3)
+      nokogiri (~> 1)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
@@ -328,6 +331,8 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
+  foreman
+  grover
   importmap-rails
   jbuilder
   kamal

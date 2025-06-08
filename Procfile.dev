@@ -1,2 +1,3 @@
-web: rails server
-css: rails tailwindcss:watch
+# Procfile.dev
+web: ruby bin/rails server
+css: yarn build:css

@@ -4,10 +4,25 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
+  
+ 
+  <div class="flex justify-between items-center mb-5">
+  <h1 class="font-bold text-4xl">Formações</h1>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Formações</h1>
-    <%= link_to "Nova formação", new_event_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+  <div class="flex flex-col space-y-3">
+
+  <%# Botão de Relatório %>
+  <%= link_to "Imprimir Relatório (PDF)",
+        relatorio_frequencia_path(format: :pdf),
+        class: "w-full text-center rounded-xl px-3 py-3 bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-white font-medium cursor-pointer transition-colors duration-150",
+        target: "_blank" %>
+<br>
+  <%# Botão de Nova Formação %>
+  <%= link_to "Nova formação",
+        new_event_path,
+        class: "w-full text-center rounded-xl px-3 py-3 bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-white font-medium cursor-pointer transition-colors duration-150" %>
+
+</div>
   </div>
 
   <div id="events" class="min-w-full divide-y divide-gray-200 space-y-5">
@@ -23,7 +38,8 @@
         </div>
       <% end %>
     <% else %>
-      <p class="text-center my-10">Nenhum evento encontrado.</p>
+      <p class="text-center my-10">Nenhuma formação encontrada.</p>
     <% end %>
+  </div>
   </div>
 </div>

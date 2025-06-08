@@ -1,0 +1,15 @@
+<%# app/views/layouts/pdf.html.erb %>
+<!DOCTYPE html>
+<html>
+<head>
+    <%= stylesheet_link_tag "pdf", media: "all" %>
+
+  <meta charset="UTF-8">
+  <title>Relatório de Frequência</title>
+  <%# Usamos o helper padrão do Rails para o CSS %>
+  <%= stylesheet_link_tag "pdf", media: "all" %>
+</head>
+<body>
+  <%= yield %>
+</body>
+</html>

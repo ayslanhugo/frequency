@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Relatório de Frequência - JCC</title>
+    
+  
+
+  <%# O estilo agora está diretamente aqui dentro %>
+  <style type="text/css">
+    /* --- Configurações Gerais da Página --- */
+    body {
+      font-family: 'Helvetica', Arial, sans-serif;
+      font-size: 11pt;
+      color: #333;
+    }
+
+    /* --- Cabeçalho do Relatório --- */
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #142d4a; /* Linha azul escura */
+      padding-bottom: 10px;
+    }
+
+    .header h1 {
+      color: #142d4a; /* Cor principal da sua marca */
+      font-size: 22pt;
+      margin: 0;
+    }
+
+    .header .report-date {
+      font-size: 8pt;
+      color: #777;
+      margin-top: 5px;
+    }
+
+    /* --- Conteúdo Principal --- */
+    .content {
+      margin-top: 20px;
+    }
+
+    /* Seção de cada Evento/Formação */
+    .event-section {
+      margin-bottom: 30px;
+      page-break-inside: avoid; /* Tenta evitar que um bloco de evento seja quebrado entre duas páginas */
+    }
+
+    .event-section h2 {
+      font-size: 14pt;
+      font-weight: bold;
+      color: #333;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
+
+    .event-section h2 span {
+      font-weight: normal;
+      font-size: 9pt;
+      color: #666;
+    }
+
+    .event-section ul {
+      list-style-type: none;
+      padding-left: 15px;
+      margin: 0;
+    }
+
+    .event-section li {
+      padding: 4px 0;
+      font-size: 10pt;
+    }
+
+    .event-section p i {
+      color: #888;
+      font-size: 10pt;
+    }
+
+    /* --- Rodapé do Relatório --- */
+    .footer {
+      position: fixed;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      height: 50px;
+      text-align: center;
+      font-size: 8pt;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <%# -- CABEÇALHO DO RELATÓRIO -- %>
+  <div class="header">
+    <h1>Relatório FREQUENCY</h1>
+    <p class="report-date">
+      <em>Gerado em: <%= l Date.current, format: :long %></em>
+    </p>
+  </div>
+
+  <%# -- CONTEÚDO PRINCIPAL -- %>
+  <div class="content">
+    <% @events.each do |event| %>
+      <div class="event-section">
+        <h2>
+          <%= event.title %> - <%= event.students.size %> participante(s)
+          <% if event.event_at.present? %>
+            <span>(<%= l event.event_at, format: :short %>)</span>
+          <% end %>
+        </h2>
+        
+        <% if event.students.any? %>
+          <ul>
+            <% event.students.order(:name).each do |student| %>
+              <li><%= student.name %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p><i>Nenhum participante registrado para esta formação.</i></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="footer">
+    <p>
+      <em>Relatório gerado pelo Frequency | JCC - Jovens a Caminho do Céu</em>
+    </p>
+    <div class="header">
+    <%# Adicionando a logo com o novo helper %>
+      <img src="<%= embedded_image('logo.png') %>" alt="Logo do jcc" style="max-width: 100px; height: auto;">
+    </div>
+  </div>
+  </div>
+
+</body>
+</html>

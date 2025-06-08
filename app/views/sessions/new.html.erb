@@ -8,9 +8,8 @@
     <%# <img src="/logo.png" alt="Logo da Igreja"> %>
 
     <%# Título da página %>
-    <h1 class="text-2xl sm:text-1xl font-bold text-center text-gray-800 mb-6">Seja Bem-Vindo
+    <h1 class="text-2xl sm:text-1xl font-bold text-center text-gray-800 mb-6">Seja Bem-Vindo ao FREQUENCY</h1>
       <br>
-      Christo nihil præponere
       </h1>
 
     <%# Mensagens de alerta e aviso %>
@@ -26,7 +25,7 @@
 
     <%= form_with url: session_url, class: "space-y-6" do |form| %>
       <div>
-        <%= form.label :email_address, "Endereço de E-mail", class: "block text-sm font-medium text-gray-900 mb-1" %>
+        <%= form.label :email_address, "Endereço de E-mail", class: "font-semibold text-center text-gray-800 mb-6" %>
         <%= form.email_field :email_address,
                               required: true,
                               autofocus: true,
@@ -37,7 +36,7 @@
       </div>
 
       <div>
-        <%= form.label :password, "Senha", class: "block text-sm font-medium text-gray-900 mb-1" %>
+        <%= form.label :password, "Senha", class: "font-semibold text-center text-gray-800 mb-6" %>
         <%= form.password_field :password,
                                 required: true,
                                 autocomplete: "current-password",
@@ -48,10 +47,15 @@
 
       <div class="sm:flex sm:items-center sm:justify-between">
         <div class="sm:w-auto w-full">
-          <%= form.submit "Entrar", class: "w-full sm:w-auto text-center rounded-xl px-8 py-3 bg-blue-900 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-white font-medium cursor-pointer transition-colors duration-150" %>
+          
+          <%= form.submit "Entrar", class: "w-full text-center rounded-xl px-8 py-3 bg-blue-900 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-white font-medium cursor-pointer transition-colors duration-150" %>
         </div>
+
         <div class="mt-4 text-sm text-center sm:mt-0 sm:text-right">
           <%= link_to "Esqueceu sua senha?", new_password_path, class: "font-medium text-blue-800 hover:text-blue-800 hover:underline" %>
         </div>
+        
       </div>
+      <br>
+            <p class="text-1xl font-semibold text-center text-gray-100 mb-6">Christo nihil præponere</p>
     <% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "reports/frequency"
   resource :session
   resources :students
   resources :events
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   get "about" => "pages#about", as: :sobre
+  get "relatorio_frequencia", to: "reports#frequency", as: :relatorio_frequencia
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
