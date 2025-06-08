@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_29_013836) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_05_232932) do
   create_table "events", force: :cascade do |t|
     t.datetime "event_at"
     t.string "title"
@@ -55,6 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_29_013836) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.boolean "is_admin", default: false
+    t.string "phone"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 

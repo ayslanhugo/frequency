@@ -1,10 +1,10 @@
-<%= form_with(model: User, class: "contents") do |form| %>
-  <% if user.errors.any? %>
+<%= form_with(model: @user, class: "contents") do |form| %>
+  <% if @user.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(user.errors.count, "error") %> error</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> error</h2>
 
       <ul class="list-disc ml-6">
-        <% user.errors.each do |error| %>
+        <% @user.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -13,20 +13,30 @@
 
   <div class="my-5">
     <%= form.label "Nome do formador" %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": user.errors[:name].none?, "border-red-400 focus:outline-red-600": user.errors[:name].any?}] %>
+    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": @user.errors[:name].none?, "border-red-400 focus:outline-red-600": @user.errors[:name].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label "Email" %>
-    <%= form.text_field :email, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": user.errors[:email].none?, "border-red-400 focus:outline-red-600": user.errors[:email].any?}] %>
+    <%= form.label "Email do formador" %>
+    <%= form.text_field :email_address, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": @user.errors[:email_address].none?, "border-red-400 focus:outline-red-600": @user.errors[:email_address].any?}] %>
   </div>
 
+
   <div class="my-5">
-    <%= form.label "Telefone" %>
-    <%= form.text_field :phone, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": user.errors[:phone].none?, "border-red-400 focus:outline-red-600": user.errors[:phone].any?}] %>
+    <%= form.label "Telefone do formador" %>
+    <%= form.text_field :phone, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": @user.errors[:phone].none?, "border-red-400 focus:outline-red-600": @user.errors[:phone].any?}] %>
   </div>
+
+
+  <div class="my-5">
+    <%= form.label "Senha do formador" %>
+    <%= form.password_field :password, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": @user.errors[:password].none?, "border-red-400 focus:outline-red-600": @user.errors[:password].any?}] %>
+  </div>
+
 
   <div class="inline">
-    <%= form.submit "Salvar formador", class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "Salvar novo formador", class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
   </div>
+
+  
 <% end %>

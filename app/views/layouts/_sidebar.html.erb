@@ -3,10 +3,13 @@
 
   <div
     @click.away="open = false"
-    x-data="{ open: false, desktopCollapsed: false }"
+    x-data="{ open: false, desktopCollapsed: true }"
+    @mouseenter="desktopCollapsed = false" <%# 2. Expande quando o mouse entra %>
+    @mouseleave="desktopCollapsed = true" <%# 3. Recolhe quando o mouse sai %>
+
     class="flex flex-col w-64 <%# Largura base para mobile quando aberto %>
           shadow-xl
-          dark-mode:text-gray-200 
+          dark:text-gray-200 
           flex-shrink-0 h-screen sticky top-0
           transition-all duration-300 ease-in-out"
           
@@ -21,15 +24,12 @@
       <a href="<%= root_path %>"
         class="block rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-blue-500"
         :class="desktopCollapsed ? 'md:mx-auto' : ''">
-        <%# Logo: Mostra completo ou só um ícone quando recolhido %>
-        <span :class="desktopCollapsed ? 'md:hidden' : 'md:block'">
-          <img src="/logo.png" alt="Logo da Igreja">
-        </span>
-        <span x-show="desktopCollapsed" class="md:block hidden"> <%# Ícone placeholder para logo recolhida %>
-          <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
-          </svg>
-        </span>
+        
+        <%# Logo %>
+        <img src="/logo.png" 
+            alt="Logo da Igreja"
+            class="transition-all duration-300 ease-in-out"
+            :class="desktopCollapsed ? 'h-8 w-auto' : 'h-10 w-auto'">
       </a>
       <%# Botão de toggle para mobile (continua escondido em telas md+) %>
       <button class="rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-white" @click="open = !open">
@@ -80,27 +80,20 @@
 
           <span class="ms-3" :class="{ 'md:hidden': desktopCollapsed }">Formadores</span>
         <% end %>
+
+         <%= link_to sobre_path, 
+                   class: "flex items-center p-2.5 text-lg font-semibold text-blue-100 hover:bg-blue-600 hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors duration-150 dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200",
+                  "x-bind:class" => "{ 'md:justify-center': desktopCollapsed }" do %>
+        <svg class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+        </svg>
+        <span class="ms-3" :class="{ 'md:hidden': desktopCollapsed }">Nossa Missão</span>
+      <% end %>
       </div>
 
       <%# Ações na parte de baixo (rodapé da sidebar) %>
       <div class="mt-auto space-y-1 pt-4"> 
-        
-        <%# Botão de Recolher/Expandir para Desktop %>
-        <button @click="desktopCollapsed = !desktopCollapsed"
-                class="hidden md:flex w-full items-center p-2.5 text-blue-100 hover:bg-blue-600 hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
-                :class="desktopCollapsed ? 'md:justify-center' : ''">
-          <svg x-show="!desktopCollapsed" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"> 
-            
-            <%# Ícone para Recolher %>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
-          </svg>
-          <svg x-show="desktopCollapsed" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"> 
-            
-            <%# Ícone para Expandir %>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 4.5l7.5 7.5-7.5 7.5m6-15l7.5 7.5-7.5 7.5" />
-          </svg>
-          <span class="ms-3" :class="{ 'md:hidden': desktopCollapsed }">Recolher</span>
-        </button>
+
 
         <%# Link de Saída %>
         <%= link_to session_path,

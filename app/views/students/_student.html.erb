@@ -3,12 +3,22 @@
     <strong class="block font-medium mb-1">Nome:</strong>
     <%= student.name %>
   </div>
+
   <div>
     <strong class="block font-medium mb-1">Email:</strong>
-    <%= student.email %>
+    <% if student.email.present? %>
+      <%= student.email %>
+    <% else %>
+      <span class="text-gray-500">Email não informado</span>
+    <% end %>
   </div>
+
   <div>
     <strong class="block font-medium mb-1">Telefone:</strong>
-    <%= student.phone %>
+    <% if student.phone.present? %>
+      <%= student.phone %>
+    <% else %>
+      <span class="text-gray-500">Telefone não informado</span>
+    <% end %>
   </div>
 </div>

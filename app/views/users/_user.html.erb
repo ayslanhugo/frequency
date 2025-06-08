@@ -1,12 +1,33 @@
 <div id="<%= dom_id user %>" class="w-full sm:w-auto my-5 space-y-5">
+  
   <div>
     <strong class="block font-medium mb-1">Nome:</strong>
     <%= user.name %>
   </div>
+  
   <div>
     <strong class="block font-medium mb-1">Email:</strong>
-    <%= user.email_address %>
+    <% if user.email_address? %>
+      <%= user.email_address %>
+    <% else %>
+      <span class="text-gray-500">Email não informado</span>
+    <% end %>
   </div>
+ 
+  <div>
+    <strong class="block font-medium mb-1">Telefone:</strong>
+    <% if user.phone.present? %>
+      <%= user.phone %>
+    <% else %>
+      <span class="text-gray-500">Telefone não informado</span>
+    <% end %>
+  </div>
+  
+  <div>
+    <strong class="block font-medium mb-1">Criado em:</strong>
+    <%= user.created_at.strftime("%d/%m/%Y %H:%M") %>
+  </div>
+
 </div>
 
 </div>

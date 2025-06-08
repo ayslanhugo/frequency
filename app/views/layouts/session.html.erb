@@ -18,16 +18,10 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
-<%# <link rel="preconnect" href="https://fonts.googleapis.com"> %>
-<%# <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> %>
-<%# <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> %>
-  
-  <%# Nova fonte "Pacifico" %>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   </head>
 
-  <body class=" font-pacifico min-h-screen flex flex-col items-center justify-center py-6 px-4 sm:px-6 lg:px-8" style="background-color: #142D4A">    <%= yield %> <%# Isto vai renderizar o seu código de new.html.erb (o card) %>
+  <body class=" font-pacifico min-h-screen flex flex-col items-center justify-center py-6 px-4 sm:px-6 lg:px-8" style="background-image: url('/background.png'); background-size: cover; background-position: center;">    
+      
+    <%= yield %> <%# Isto vai renderizar o seu código de new.html.erb (o card) %>
   </body>
 </html>

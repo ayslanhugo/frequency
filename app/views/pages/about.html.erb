@@ -1,0 +1,46 @@
+<%# app/views/pages/about.html.erb %>
+<% content_for :title, "Sobre" %>
+
+<div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-white rounded-lg shadow-md">
+  
+  <h1 class="font-bold text-4xl">
+    Quem Somos
+  </h1>
+  <br>
+  <%# A classe 'prose' formata todo o conteúdo de texto abaixo de forma elegante. %>
+  <div class="prose prose-lg max-w-none text-gray-700 space-y-12">
+
+    <%# Seção 1: Sobre a Plataforma %>
+    <div>
+      <h2 class="text-3xl text-gray-800">A Plataforma Frequency</h2>
+      <p>
+        "Frequency" é uma plataforma desenvolvida para facilitar a gestão e o acompanhamento dos ciclos formativos do JCC (Jovens a Caminho do Céu), permitindo que os jovens continuem sua jornada de fé e crescimento espiritual de forma organizada e acessível.
+      </p>
+    </div>
+    <br>
+    <%# Seção 2: História do Grupo %>
+    <div>
+      <h2 class="text-3xl text-gray-800">Nossa História (JCC)</h2>
+      <p>
+        Nossa caminhada começou de forma simples e autêntica: com o sonho e a inquietação de um pequeno grupo de crismandos que, inspirados pelo exemplo luminoso de São Francisco de Assis, sentiram um forte chamado para continuar crescendo na fé, mesmo após a Crisma. Desejávamos encontrar a perfeita alegria na simplicidade, na fraternidade e na oração.
+      </p>
+      <p>
+        Foi desse anseio que nasceu o JCC. Começamos a nos reunir todas as segundas-feiras para partilhar a vida, orar e apoiar uns aos outros na jornada. Logo, esses encontros culminaram em nossos ciclos formativos anuais, realizados através de dois retiros profundos ao longo do ano.
+      </p>
+    </div>
+    <br>
+    <%# Seção 3: Créditos %>
+    <div>
+      <h2 class="text-3xl text-gray-800">Desenvolvimento</h2>
+      <ul class="list-disc pl-5 font-semibold">
+        <li>Ayslan Hugo Lucio dos Santos</li>
+        <li>Alvaro Gama de Sá</li>
+      </ul>
+      <p class="text-base !mt-2 italic">
+        <%# A classe !mt-2 do Tailwind remove a margem extra do 'prose' para este parágrafo específico %>
+        Alunos do 6º período de Sistemas de Informação do Centro Universitário do Rio São Francisco - UniRios.
+      </p>
+    </div>
+
+  </div>
+</div>
