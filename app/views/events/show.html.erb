@@ -9,7 +9,9 @@
 
   <div class="mb-6">
     <%= form_with(model: @event, method: :patch, class: "contents w-full") do |form| %>
-      
+
+       <%= form.submit "Atualizar Presenças", class: "text-center rounded-xl px-3 py-3 bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-white font-medium cursor-pointer transition-colors duration-150" %>
+    
       <%# Novo contêiner para a lista de estudantes %>
       <div class="border border-gray-200 rounded-lg divide-y divide-gray-200 mb-6">
         <% if @students.any? %>
@@ -36,7 +38,6 @@
         <% end %>
       </div>
 
-      <%= form.submit "Atualizar Presenças", class: "w-full text-center rounded-xl px-3 py-3 bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-white font-medium cursor-pointer transition-colors duration-150" %>
     <% end %>
   </div>
 
