@@ -1,8 +1,7 @@
 <%= form_with(model: @user, class: "contents") do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(@user.errors.count, "error") %> error</h2>
-
+      <h2><%= pluralize(@user.errors.count, "erro") %> ao salvar:</h2>
       <ul class="list-disc ml-6">
         <% @user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -21,22 +20,23 @@
     <%= form.text_field :email_address, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": @user.errors[:email_address].none?, "border-red-400 focus:outline-red-600": @user.errors[:email_address].any?}] %>
   </div>
 
-
   <div class="my-5">
     <%= form.label "Telefone do formador" %>
     <%= form.text_field :phone, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": @user.errors[:phone].none?, "border-red-400 focus:outline-red-600": @user.errors[:phone].any?}] %>
   </div>
-
 
   <div class="my-5">
     <%= form.label "Senha do formador" %>
     <%= form.password_field :password, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": @user.errors[:password].none?, "border-red-400 focus:outline-red-600": @user.errors[:password].any?}] %>
   </div>
 
-
+  <% if current_user&.admin? %>
+    <div class="my-5 flex items-center">
+      <%= form.check_box :is_admin, class: "h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" %>
+      <%= form.label :is_admin, "Este formador é um Administrador?", class: "ml-3 block text-sm font-medium text-gray-700" %>
+    </div>
+  <% end %>
   <div class="inline">
     <%= form.submit "Salvar novo formador", class: "text-center rounded-xl px-3 py-3 bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-white font-medium cursor-pointer transition-colors duration-150" %>
   </div>
-
-  
 <% end %>

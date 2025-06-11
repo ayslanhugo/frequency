@@ -55,16 +55,11 @@ puts "\nIniciando o seed de participantes..."
 
 # Lista de nomes extraída da sua lista de aniversariantes.
 nomes_dos_participantes = [
-  "Augusto", "Any Lara", "Monique", "Vinícius Wendel", "Cecília",
-  "José Antônio", "Athos", "Lucas Wagner", "Victor Lopis", "Rone", "Leonardo",
-  "Débora", "Maria", "Davi", "Lívia", "Willderson", "Guilherme Cauã",
-  "Tomás", "Rian", "Camila", "Andrey Diogenes", "Gabriel Miranda",
-  "Guilherme Marinho", "Maria Fernanda", "M. Sonaira", "Geovanna", "Tamires",
-  "Ana Clara", "Keven", "Yasmim", "Catherine", "Jeysiane", "Iara",
-  "Gabriella", "Alisson", "Adriana Maria", "Sidcley", "Tafna", "Alberto",
-  "Denise", "Laura", "Thaynna", "Marianna", "Alex", "Enamaria", "Lis", "Cíntia"
+  "Alex", "Alvaro", "Emily", "Gustavo", "Jario",
+  "Hagda", "Hericle", "Luan", "Thiago", "Edemilton", "Anchieta"
 ]
 
+Student.destroy_all
 nomes_dos_participantes.each do |nome|
   # Usamos 'find_or_create_by!' para não criar duplicatas.
   # Ele só vai criar se um participante com este nome ainda não existir.
