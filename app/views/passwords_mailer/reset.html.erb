@@ -1,6 +1,4 @@
-<p>
-  Você poderá redefinir sua senha dentro dos próximos 15 minutos nesta página de redefinição de senha:
-<p>
-  Você pode redefinir sua senha dentro dos próximos 15 minutos nesta página de redefinição de senha:
-  <%= link_to "Página de redefinição de senha", edit_password_url(@user.password_reset_token) %>.
-</p>
+Olá, <%= @user.name %>!
+<p>Alguém solicitou uma redefinição de senha para sua conta. Se foi você, clique no link abaixo. O link irá expirar em 15 minutos.</p>
+<%= link_to "Redefinir minha senha", edit_password_url(token: @token) %>
+<p>Se você não solicitou isso, pode ignorar este e-mail.</p>

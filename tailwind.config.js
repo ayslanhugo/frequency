@@ -9,8 +9,8 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   darkMode: 'class',
-  theme: {
-    extend: {
+    theme: {
+      extend: {
     },
   },
   plugins: [],

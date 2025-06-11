@@ -1,6 +1,7 @@
 class PasswordsMailer < ApplicationMailer
-  def reset(user)
+  def reset(user:, token:)
     @user = user
-    mail subject: "Reinicie sua senha", to: user.email_address
+    @token = token
+    mail to: @user.email_address, subject: "Redefinição de Senha - Frequency JCC"
   end
 end

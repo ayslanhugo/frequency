@@ -70,16 +70,17 @@
           <span class="ms-3" :class="{ 'md:hidden': desktopCollapsed }">Participantes</span>
         <% end %>
 
-        <%= link_to users_path, 
-                    class: "flex items-center p-2.5 text-lg font-semibold text-blue-100 hover:bg-blue-600 hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors duration-150 dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200",
-                    "x-bind:class" => "{ 'md:justify-center': desktopCollapsed }" do %>
-          <svg class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"> <%# Ícone para Formadores %>
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-          </svg>
-
-
-          <span class="ms-3" :class="{ 'md:hidden': desktopCollapsed }">Formadores</span>
-        <% end %>
+        <%# Link para Formadores (visível apenas para administradores) %>
+<% if current_user&.admin? %>
+  <%= link_to users_path, 
+          class: "flex items-center p-2.5 text-lg font-semibold text-blue-100 hover:bg-blue-600 hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors duration-150 dark:text-gray-200 dark:hover:bg-gray-700",
+          "x-bind:class" => "{ 'md:justify-center': desktopCollapsed }" do %>
+    <svg class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+    </svg>
+    <span class="ms-3" :class="{ 'md:hidden': desktopCollapsed }">Formadores</span>
+  <% end %>
+<% end %>
 
          <%= link_to sobre_path, 
                    class: "flex items-center p-2.5 text-lg font-semibold text-blue-100 hover:bg-blue-600 hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors duration-150 dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200",
