@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorize_user
   before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json
@@ -58,6 +59,12 @@ class UsersController < ApplicationController
   end
 
   private
+    def authorize_user
+      unless Current.user.is_admin
+        redirect_to root_path, notice: "Você não tem permissões para acessar este recurso"
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params.expect(:id))

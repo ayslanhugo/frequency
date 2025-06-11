@@ -57,6 +57,8 @@ class EventsController < ApplicationController
           end
         end
       end
+    else
+      @event.participations.delete_all
     end
 
     respond_to do |format|
